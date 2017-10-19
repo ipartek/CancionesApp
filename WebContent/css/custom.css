@@ -1,0 +1,78 @@
+body {
+  min-height: 2000px;
+  padding-top: 70px;
+}
+
+.navbar-brand img{
+	width: 35px;
+	height: 35px;
+}
+
+
+table img{
+	width: 100%;
+	height: auto;
+	max-width: 150px;
+	max-height: 150px;
+}
+
+#span_password{
+	width: 70px;
+	display: inline-block;
+}
+
+.title{
+	font-size: 0.7em !important;
+	margin-right: 5px;
+	float:left;
+	margin-top: 3px;
+}
+
+.text-red{
+	color: red !important;
+}
+
+/*  data-list=user
+***********************************/
+
+ol[data-list='user']{
+	list-style: none;
+}
+
+ol[data-list='user'] li{
+	display: flex;
+	border-bottom: 1px solid #939090;
+	margin-top: 20px;
+	padding-bottom: 10px;
+}	
+
+ol[data-list='user'] .id{
+    font-size: 3.6em;
+    color: #939090;
+    width: 75px;
+    text-align: right;
+}
+
+ol[data-list='user'] img{
+	width: 65px;
+	height: 65px;
+	margin-left: 15px;
+} 
+
+ol[data-list='user'] .content-data{
+	display: flex;
+	flex-direction: column;
+	margin-left: 20px;
+	flex-grow: 2;
+}
+
+ol[data-list='user'] .name{
+	font-weight: 600;
+	color: #0099CC;
+	font-size: 2em;
+}
+ol[data-list='user'] .email{	
+	color: #939090;
+	font-size: 1.2em;
+}
+
