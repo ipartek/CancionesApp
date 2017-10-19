@@ -1,22 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 
 <%@page errorPage="error.jsp" %>
-
-
 <%@page import="com.ipartek.formacion.canciones.pojo.Usuario"%>
-
-
-
-<% 
-    //recuperar session del usuario
-	Usuario u = (Usuario)session.getAttribute("usuario_logeado");
-	if ( u == null ){
-		//si no existe usuario crear uno para evitar erro 500
-		u = new Usuario("No Invitado","","");
-	}
-
-
-%> 
 
 <!DOCTYPE html>
 <html lang="es">

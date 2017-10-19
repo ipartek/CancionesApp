@@ -33,7 +33,7 @@
         	
         	<!-- Atributo que viene del Servlet -->
         	<c:if test="${!empty requestScope.msg}">        
-        		<p>${msg}</p>
+        		<p>${requestScope.msg}</p>
         	</c:if>
            
            <c:choose>

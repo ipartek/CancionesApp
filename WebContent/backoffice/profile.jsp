@@ -14,17 +14,17 @@
 	            <div class="well well-sm">
 	                <div class="row">
 	                    <div class="col-sm-6 col-md-4">
-	                        <img src="<%= u.getAvatar() %>" alt="" class="img-rounded img-responsive" />
+	                        <img src="${sessionScope.usuario_logeado.avatar}" alt="" class="img-rounded img-responsive" />
 	                    </div>
 	                    <div class="col-sm-6 col-md-8">
-	                        <h3><%= u.getNombre() %></h3>
+	                        <h3>${sessionScope.usuario_logeado.nombre}</h3>
 	                        <p>
-	                            <i class="glyphicon glyphicon-envelope"></i> <%= u.getEmail() %>
+	                            <i class="glyphicon glyphicon-envelope"></i>${sessionScope.usuario_logeado.email}
 	                            <br />
-	                            <i class="glyphicon glyphicon-user"></i> <%= u.getId() %>
+	                            <i class="glyphicon glyphicon-user"></i>${sessionScope.usuario_logeado.id}
 	                            <br />
 	                            <i class="glyphicon glyphicon-lock"></i> 
-	                            <span id="span_password" class="pass" data-password="<%= u.getPass() %>">*********</span> 
+	                            <span id="span_password" class="pass" data-password="${sessionScope.usuario_logeado.pass}">*********</span> 
 	                            <i id="btn_ojo" class="glyphicon glyphicon-eye-open show-pass oculto"></i>
 	                        </p>
 	                    </div>

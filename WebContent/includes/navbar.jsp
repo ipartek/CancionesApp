@@ -1,7 +1,5 @@
 <%@page import="com.ipartek.formacion.canciones.pojo.Usuario"%>
 
-<%! Usuario u; %>
-
 <div class="container"> 
  <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -29,7 +27,7 @@
           <ul class="nav navbar-top-links navbar-right">
            		<li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">                       
-                       <span class="user-name"><%=u.getNombre()%></span>
+                       <span class="user-name">${sessionScope.usuario_logeado.nombre}</span>
                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
