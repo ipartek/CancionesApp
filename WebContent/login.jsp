@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@page errorPage="error.jsp" %>
 
@@ -25,16 +26,15 @@
         <div class="card card-container">         
         
         
-        	<!-- parametro que viene en la URL-->
-        	<%
-        	String msgUrl =	request.getParameter("msg");
-        	if ( msgUrl != null ){
-        		out.print("<p>" + msgUrl + "</p>");
-        	}
-        	%>
+        	<!-- parametro que viene en la URL-->        
+        	<c:if test="${!empty param.msg}">
+        		<p>${param.msg}</p>
+        	</c:if>
         	
-        	<!-- Atributo que viene del Servlet -->        
-        	<p>${msg}</p>
+        	<!-- Atributo que viene del Servlet -->
+        	<c:if test="${!empty requestScope.msg}">        
+        		<p>${msg}</p>
+        	</c:if>
            
            <c:choose>
 			    <c:when test="${empty cookie['cAvatar']}">
@@ -73,7 +73,11 @@
             </a>
         </div><!-- /card-container -->
         
-        <p class="fecha">Ultima visita: ${cookie['cUltVisita'].value}</p>
+        <c:if test="${!empty cookie['cUltVisita']}">
+	        <jsp:useBean id="fecha" class="java.util.Date"/>
+			<jsp:setProperty name="fecha" property="time" value="${cookie['cUltVisita'].value}"/>		
+	        <p class="fecha">Ultima visita: <fmt:formatDate value="${fecha}" pattern="dd/MM/yyyy HH:mm"/> </p>
+	    </c:if>    
         
         
     </div><!-- /container -->
