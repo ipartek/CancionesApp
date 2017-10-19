@@ -63,6 +63,8 @@ public class LoginController extends HttpServlet {
 		String nombre = request.getParameter("nombre");
 		String password = request.getParameter("password");
 		String remenberme = request.getParameter("remenberme");
+		String idioma = request.getParameter("idioma");
+		
 		
 		String view = VIEW_LOGIN;
 		
@@ -77,9 +79,10 @@ public class LoginController extends HttpServlet {
 				view = VIEW_HOME;
 				
 				//guardar usuario en session
-				session.setAttribute("usuario_logeado", usuario);			
+				session.setAttribute("usuario_logeado", usuario);
+				session.setAttribute("idioma", idioma);			
 				
-				gestionCookies(remenberme,usuario, response );				
+				gestionCookies(remenberme,idioma, usuario, response );				
 				
 			}else {
 				msg = "Lo sentimos pero las credenciales no son correctas, prueba de nuevo por favor.";
@@ -96,12 +99,16 @@ public class LoginController extends HttpServlet {
 		
 	}
 
-	private void gestionCookies(String remenberme, Usuario usuario, HttpServletResponse response) {
+	private void gestionCookies(String remenberme, String idioma, Usuario usuario, HttpServletResponse response) {
 		Cookie cNombre = null;
+		Cookie cIdioma = null;
 		Cookie cAvatar = null;
 		Cookie cUltVisita = null;
 		
 		if ( remenberme == null ) {
+			
+			cIdioma = new Cookie("cIdioma", "" );
+			cIdioma.setMaxAge(0);	
 			
 			cNombre = new Cookie("cNombre", "" );
 			cNombre.setMaxAge(0);			
@@ -113,6 +120,10 @@ public class LoginController extends HttpServlet {
 			cAvatar.setMaxAge(0);
 			
 		}else {			
+			
+			cIdioma = new Cookie("cIdioma", idioma );
+			cIdioma.setMaxAge(EXPIRED_TIME_COOKIES);	
+			
 			cNombre = new Cookie("cNombre", usuario.getNombre() );
 			cNombre.setMaxAge(EXPIRED_TIME_COOKIES);
 						
@@ -122,6 +133,7 @@ public class LoginController extends HttpServlet {
 			cAvatar = new Cookie("cAvatar", usuario.getAvatar() );
 			cAvatar.setMaxAge(EXPIRED_TIME_COOKIES);
 		}	
+		response.addCookie(cIdioma);
 		response.addCookie(cNombre);
 		response.addCookie(cUltVisita);
 		response.addCookie(cAvatar);
