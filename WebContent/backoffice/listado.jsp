@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="com.ipartek.formacion.canciones.pojo.Cancion"%>
 <%@page import="java.util.ArrayList"%>
 
@@ -5,69 +6,48 @@
 <%@include file="../includes/navbar.jsp" %>
 
 
-	<%
-		//gestion de los mensajes para el Usuario
-		String mensaje = (String) request.getAttribute("mensaje");
-		if (mensaje != null) {
-			out.print("<p>" + mensaje + "</p>");
-		}
-	%>
+		<c:if test="${!empty requestScope.mensaje}">        
+     		<p>${requestScope.mensaje}</p>
+     	</c:if>
 
 	<h1>Listado Canciones</h1>
 	
-	<table class="ordenable table table-striped table-bordered">
-		<caption>Listado Canciones</caption>	
-		<thead>
-			<tr>
-				<th>Cover</th>
-				<th>Nombre</th>
-				<th>Artista</th>
-				<th>Duración</th>
-				<th>Operaciones</th>				
-			</tr>
-		</thead>		
-		<tbody>
-		<%
-			//recorrer el ArrayList
-			ArrayList<Cancion> canciones = (ArrayList<Cancion>) request.getAttribute("listado");
-			for (Cancion c : canciones) {
-		%>
-		<tr>
-			<td>
-				<img class="cover" src="<%=c.getCover() %>" alt="Imagen del álbum" class="cover" />
-			</td>
-			
-			<td>
-				<%=c.getNombre()%>				
-			</td>
-			
-			<td>
-				<%=c.getArtista()%>				
-			</td>
-			
-			<td>	
-				<%=c.getDuracion()%>			
-			</td>
-			
-			<td>				
-				<a href="modificar?id=<%=c.getId() %>">  Modificar  </a>
-				<a href="eliminar?id=<%=c.getId()%>"><i class="fa fa-trash" aria-hidden="true"></i></a>
-			</td>
-			
-		</tr>
-
-		<%
-			} // final for			
-		%>
-		</tbody>
-	</table>
-	<% 
-		if(canciones.size() == 0){
-	%>
+	<c:if test="${!empty listado}">
+		<table class="ordenable table table-striped table-bordered">
+			<caption>Listado Canciones</caption>	
+			<thead>
+				<tr>
+					<th>Cover</th>
+					<th>Nombre</th>
+					<th>Artista</th>
+					<th>Duración</th>
+					<th>Operaciones</th>				
+				</tr>
+			</thead>		
+			<tbody>
+				<c:forEach items="${listado}" var="c">		
+					<tr>
+						<td>
+							<img class="cover" src="${c.cover}" alt="Imagen del álbum" class="cover" />
+						</td>				
+						<td>${c.nombre}</td>				
+						<td>${c.artista}</td>
+						<td>${c.duracion}</td>				
+						<td>				
+							<a href="modificar?id=${c.id}">  Modificar  </a>
+							<a href="eliminar?id=${c.id}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+						</td>				
+					</tr>
+				</c:forEach>		
+			</tbody>
+		</table>
+	</c:if>
+	
+	
+	<c:if test="${empty listado}">
 		<h3>No hay canciones</h3>
-	<% 	
-		}
-	%>
+	</c:if>	
+	
 	
 
 	<h2>Crear Cancion</h2>

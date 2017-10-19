@@ -3,8 +3,13 @@
 
 <%@page errorPage="error.jsp" %>
 
+
+<c:set var="language" value="${ not empty cookie['cIdioma'] ? cookie['cIdioma'] : 'es_ES' }"></c:set>
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="i18nmessages" /> 
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="${language}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,12 +65,20 @@
                        autofocus>
                 
                 <input type="password" name="password" tabindex="2"  id="inputPassword" class="form-control" placeholder="Password" required>
+                
+                <label for="idioma">Selecciona idioma:</label>
+                <select name="idioma">
+                	<option value="es_ES">Castellano</option>
+                	<option value="eu_ES">Euskara</option>
+                </select>
+                
+                
                 <div id="remember" class="checkbox">
                     <label>
-                        <input type="checkbox" name="remenberme" value="true" tabindex="3" checked> Remember me
+                        <input type="checkbox" name="remenberme" value="true" tabindex="3" checked><fmt:message key="login.remenber"/>
                     </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" tabindex="4" type="submit">Login</button>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" tabindex="4" type="submit"><fmt:message key="login.boton"/></button>
             </form><!-- /form -->
             
             <a href="${pageContext.request.contextPath}/registro.jsp" class="forgot-password">
