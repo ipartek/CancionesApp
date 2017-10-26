@@ -1,10 +1,12 @@
 package com.ipartek.formacion.canciones.utilidades;
 
-import static org.junit.Assert.*;
+import com.ipartek.formacion.canciones.utilidades.Utilidades;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class UtilidadesTest {
+public class TestUtilidades {
 	
 
 	@Test
