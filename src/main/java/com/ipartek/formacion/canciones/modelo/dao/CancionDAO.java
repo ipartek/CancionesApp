@@ -27,12 +27,17 @@ public class CancionDAO implements Persistable<Cancion> {
 		}
 		return INSTANCE;
 	}
+
 	/**
 	 *
-	 * Busca canciones que coinciden el nombre o artista de la <code>Cancion</code><br>
+	 * Busca canciones que coinciden el nombre o artista de la
+	 * <code>Cancion</code><br>
 	 * No es casesensitive
-	 * @param criterio String cadena a buscar
-	 * @return Lista de Canciones limitado por <code>LIMIT</code>, vacia si no encuentra nada
+	 *
+	 * @param criterio
+	 *            String cadena a buscar
+	 * @return Lista de Canciones limitado por <code>LIMIT</code>, vacia si no
+	 *         encuentra nada
 	 */
 	public List<Cancion> findByNameAllArtist(String criterio) {
 		ArrayList<Cancion> canciones = new ArrayList<Cancion>();
@@ -88,9 +93,15 @@ public class CancionDAO implements Persistable<Cancion> {
 	@Override
 	public boolean create(Cancion c) {
 		boolean resul = false;
-		String sql = "INSERT INTO `cancion` (`nombre`, `artista`, `duracion`, `cover`) VALUES (?, ?, ?, ?);";
+		String sql = "";
+		if (c.getCover() == null || "".equals(c.getCover())) {
+			sql = "INSERT INTO `cancion` (`nombre`, `artista`, `duracion`) VALUES (?, ?, ?);";
+		} else {
+			sql = "INSERT INTO `cancion` (`nombre`, `artista`, `duracion`, `cover`) VALUES (?, ?, ?, ?);";
+		}
 
-		try (Connection con = ConnectionManager.open();
+		try (
+				Connection con = ConnectionManager.open();
 				PreparedStatement pst = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
 				) {
@@ -98,7 +109,11 @@ public class CancionDAO implements Persistable<Cancion> {
 			pst.setString(1, c.getNombre());
 			pst.setString(2, c.getArtista());
 			pst.setString(3, c.getDuracion());
-			pst.setString(4, c.getCover());
+			if (c.getCover() != null && !"".equals(c.getCover())) {
+				pst.setString(4, c.getCover());
+			} else {
+
+			}
 
 			int affectedRows = pst.executeUpdate();
 
@@ -124,13 +139,24 @@ public class CancionDAO implements Persistable<Cancion> {
 	@Override
 	public boolean update(Cancion c, int id) {
 		boolean resul = false;
-		String sql = "UPDATE `cancion` SET `nombre`=?, `artista`=?, `duracion`=?, `cover`=? WHERE  `id`=?;";
+		String sql = "";
+		if (c.getCover() == null || "".equals(c.getCover())) {
+			sql = "UPDATE `cancion` SET `nombre`=?, `artista`=?, `duracion`=? WHERE  `id`=?;";
+		} else {
+			sql = "UPDATE `cancion` SET `nombre`=?, `artista`=?, `duracion`=?, `cover`=? WHERE  `id`=?;";
+		}
+
 		try (Connection con = ConnectionManager.open(); PreparedStatement pst = con.prepareStatement(sql);) {
 			pst.setString(1, c.getNombre());
 			pst.setString(2, c.getArtista());
 			pst.setString(3, c.getDuracion());
-			pst.setString(4, c.getCover());
-			pst.setInt(5, id);
+			if(c.getCover() == null || "".equals(c.getCover())) {
+				pst.setInt(4, id);
+			} else {
+				pst.setString(4, c.getCover());
+				pst.setInt(5, id);
+			}
+
 			if (pst.executeUpdate() == 1) {
 				resul = true;
 			}
@@ -189,7 +215,8 @@ public class CancionDAO implements Persistable<Cancion> {
 	 *            ResultSet
 	 * @return Cancion o null si falla
 	 * @throws SQLException
-	 * @throws CancionException si la duracion no tiene formato adecuado @see Cancion.setDuracion
+	 * @throws CancionException
+	 *             si la duracion no tiene formato adecuado @see Cancion.setDuracion
 	 */
 	Cancion mapeo(ResultSet rs) throws SQLException, CancionException {
 		Cancion c = null;

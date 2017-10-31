@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ipartek.formacion.canciones.controller.canciones.Alert;
 import com.ipartek.formacion.canciones.excepciones.CancionException;
 import com.ipartek.formacion.canciones.modelo.dao.CancionDAO;
 import com.ipartek.formacion.canciones.modelo.pojo.Cancion;
@@ -23,7 +24,7 @@ public class CancionesController extends HttpServlet {
 	private int accion = Acciones.LISTAR;
 	private CancionDAO dao;
 
-	private String msg; // Mensaje para el usuario
+	private Alert alert; // Alertas para el usuario
 	private String view; // vista para el forward
 	private static final String VIEW_INDEX = "canciones/index.jsp";
 	private static final String VIEW_FORM = "canciones/form.jsp";
@@ -64,6 +65,10 @@ public class CancionesController extends HttpServlet {
 			throws ServletException, IOException {
 
 		try {
+
+			alert = null;
+
+
 			// determinar la accion a realizar
 			accion = (request.getParameter("accion") != null) ? Integer.parseInt(request.getParameter("accion"))
 					: Acciones.LISTAR;
@@ -84,7 +89,6 @@ public class CancionesController extends HttpServlet {
 			case Acciones.BUSCAR:
 				buscar(request);
 				break;
-				// TODO resto de acciones
 
 			default:
 				break;
@@ -93,7 +97,7 @@ public class CancionesController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			request.setAttribute("msg", msg);
+			request.setAttribute("alert", alert);
 			request.getRequestDispatcher(view).forward(request, response);
 		}
 
@@ -104,6 +108,7 @@ public class CancionesController extends HttpServlet {
 	 * @param request
 	 */
 	private void buscar(HttpServletRequest request) {
+		alert = null;
 		String criterio = request.getParameter("criterio");
 		view = VIEW_INDEX;
 		request.setAttribute("listado", dao.findByNameAllArtist(criterio));
@@ -122,25 +127,25 @@ public class CancionesController extends HttpServlet {
 			cancion = new Cancion(id, nombre, artista, duracion, cover);
 			if (id == -1) {
 				if (dao.create(cancion)) {
-					msg = "Canción Creada con exito";
+					alert = new Alert(Alert.TIPO_SUCCESS, "Cancion Creada con exito");
 					listar(request);
 				} else {
-					msg = "No se puede crear Canción";
+					alert = new Alert(Alert.TIPO_DANGER, "No se puede crear Canción");
 					request.setAttribute("cancion", cancion);
 					view = VIEW_FORM;
 				}
 			} else {
 				if (dao.update(cancion, id)) {
-					msg = "Canción Modificada con exito";
+					alert = new Alert(Alert.TIPO_SUCCESS, "Se ha modificado Canción");
 					listar(request);
 				} else {
-					msg = "No se puede Modifir la canción";
+					alert = new Alert(Alert.TIPO_DANGER, "No se puede Modifir la canción");
 					request.setAttribute("cancion", cancion);
 					view = VIEW_FORM;
 				}
 			}
 		} catch (CancionException e) {
-			msg = "El formato de la duracion " + duracion + " no es válido";
+			alert = new Alert(Alert.TIPO_SUCCESS, "El formato de la duracion " + duracion + " no es válido");
 			cancion = new Cancion(id, nombre, artista, cover);
 			view = VIEW_FORM;
 
@@ -167,15 +172,17 @@ public class CancionesController extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		if (dao.delete(id)) {
-			msg = "Eliminada con Exito la Cancion(" + id + ")";
+			alert = new Alert(Alert.TIPO_SUCCESS, "Eliminada con Exito la Cancion(" + id + ")");
+
 		} else {
-			msg = "NO se Eliminó la Cancion(" + id + ")";
+			alert = new Alert(Alert.TIPO_DANGER, "NO se Eliminó la Cancion(" + id + ")");
 		}
 
 		listar(request);
 	}
 
 	private void listar(HttpServletRequest request) {
+		//alert = null;
 		request.setAttribute("listado", dao.findAll());
 		view = VIEW_INDEX;
 	}

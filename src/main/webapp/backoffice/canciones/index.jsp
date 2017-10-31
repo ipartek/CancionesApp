@@ -4,11 +4,7 @@
 
 <%@include file="../../includes/header.jsp" %>
 <%@include file="../../includes/navbar.jsp" %>
-
-
-		<c:if test="${!empty requestScope.mensaje}">        
-     		<p>${requestScope.mensaje}</p>
-     	</c:if>
+<%@include file="../../includes/alerts.jsp" %>
 
 	<h1>Listado Canciones</h1>
 	<a class="btn btn-primary" href="${pageContext.request.contextPath}/backoffice/canciones?accion=<%= Acciones.MOSTRAR_FORMULARIO%>">Crear Cancion</a>
@@ -29,14 +25,14 @@
 				<c:forEach items="${listado}" var="c">		
 					<tr>
 						<td>
-							<a href="${pageContext.request.contextPath}/backoffice/canciones?id=${c.id}?accion=<%= Acciones.MOSTRAR_FORMULARIO%>"><img class="cover" src="${c.cover}" alt="Imagen del álbum" class="cover" /></a>
+							<a href="${pageContext.request.contextPath}/backoffice/canciones?id=${c.id}&accion=<%= Acciones.MOSTRAR_FORMULARIO%>"><img class="cover" src="${c.cover}" alt="Imagen del álbum" class="cover" /></a>
 						</td>				
 						<td>${c.nombre}</td>				
 						<td>${c.artista}</td>
 						<td>${c.duracion}</td>				
 						<td>				
-							<a href="${pageContext.request.contextPath}/backoffice/canciones?id=${c.id}?accion=<%= Acciones.MOSTRAR_FORMULARIO%>">  Modificar  </a>
-							<a href="${pageContext.request.contextPath}/backoffice/canciones?id=${c.id}?accion=<%= Acciones.ELIMINAR%>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+							<a href="${pageContext.request.contextPath}/backoffice/canciones?id=${c.id}&accion=<%= Acciones.MOSTRAR_FORMULARIO%>">  Modificar  </a>
+							<a href="${pageContext.request.contextPath}/backoffice/canciones?id=${c.id}&accion=<%= Acciones.ELIMINAR%>"><i class="fa fa-trash" aria-hidden="true"></i></a>
 						</td>				
 					</tr>
 				</c:forEach>		
