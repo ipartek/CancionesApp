@@ -1,4 +1,5 @@
-<%@page import="com.ipartek.formacion.canciones.pojo.Cancion"%>
+<%@page import="com.ipartek.formacion.canciones.modelo.pojo.Cancion"%>
+
 
 <h1>Detalle Cancion</h1>
 
