@@ -5,10 +5,8 @@
 <%@include file="../../includes/navbar.jsp" %>
 
 
-		<c:if test="${!empty requestScope.mensaje}">        
-     		<p>${requestScope.mensaje}</p>
-     	</c:if>
-
+	<%@include file="../../includes/alerts.jsp" %>
+		
 	<h1>Listado Canciones</h1>
 	
 	<a class="btn btn-primary" href="${pageContext.request.contextPath}/backoffice/canciones?accion=<%=Acciones.MOSTRAR_FORMULARIO%>">
