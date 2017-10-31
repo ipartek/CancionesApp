@@ -1,3 +1,4 @@
+<%@page import="com.ipartek.formacion.canciones.controller.canciones.backoffice.Acciones"%>
 <%@page import="com.ipartek.formacion.canciones.pojo.Usuario"%>
 
 <div class="container"> 
@@ -20,7 +21,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="${pageContext.request.contextPath}/backoffice/index.jsp">Canciones Web</a></li>
-            <li><a href="${pageContext.request.contextPath}/backoffice/listar">Listado</a></li>
+            <li><a href="${pageContext.request.contextPath}/backoffice/canciones?accion=<%=Acciones.LISTAR%>">Canciones</a></li>
             <li><a href="${pageContext.request.contextPath}/backoffice/usuarios_conectados.jsp">U.Conectados</a></li>              
           </ul>
           
