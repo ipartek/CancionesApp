@@ -1,3 +1,4 @@
+<%@page import="com.ipartek.formacion.canciones.controller.canciones.backoffice.Acciones"%>
 <%@page import="com.ipartek.formacion.canciones.pojo.Usuario"%>
 
 <div class="container"> 
@@ -20,8 +21,10 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="${pageContext.request.contextPath}/backoffice/index.jsp">Canciones Web</a></li>
-            <li><a href="${pageContext.request.contextPath}/backoffice/listar">Listado</a></li>
-            <li><a href="${pageContext.request.contextPath}/backoffice/usuarios_conectados.jsp">U.Conectados</a></li>              
+            <li><a href="${pageContext.request.contextPath}/backoffice/canciones?accion=<%=Acciones.LISTAR%>">Canciones</a></li>
+             <li><a href="${pageContext.request.contextPath}/backoffice/usuarios?accion=<%=Acciones.LISTAR%>">Usuarios</a></li>      
+            <li><a href="${pageContext.request.contextPath}/backoffice/usuarios_conectados.jsp">U.Conectados</a></li>  
+      
           </ul>
           
           <ul class="nav navbar-top-links navbar-right">
@@ -39,8 +42,9 @@
                 </li>       
           </ul>
           
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Buscar...">
+          <form class="navbar-form navbar-right" action="${pageContext.request.contextPath}/backoffice/canciones" method="get">
+          	<input type="hidden" name="accion" value="<%=Acciones.BUSCAR%>">
+			<input type="search" class="form-control" name="criterio" placeholder="Buscar por nombre o artista" required>            
           </form>
           
           

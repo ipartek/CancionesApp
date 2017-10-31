@@ -33,12 +33,7 @@
  <div class="container">
  
  
- 		<span class="icon-meteo" data-icon="&"></span>
- 		
- 	
- 	
- 
-        <div class="card card-container">         
+ 	       <div class="card card-container">         
         
         
         	<!-- parametro que viene en la URL-->        

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.canciones.modelo.ModeloUsuario;
-import com.ipartek.formacion.canciones.pojo.Usuario;
+import com.ipartek.formacion.canciones.modelo.pojo.Usuario;
 
 /**
  * Servlet implementation class RegistroController

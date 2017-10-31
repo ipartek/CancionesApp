@@ -1,4 +1,4 @@
-package com.ipartek.formacion.canciones.pojo;
+package com.ipartek.formacion.canciones.modelo.pojo;
 
 public class Usuario {
 	

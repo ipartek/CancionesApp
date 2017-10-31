@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ipartek.formacion.canciones.modelo.ModeloUsuario;
-import com.ipartek.formacion.canciones.pojo.Usuario;
+import com.ipartek.formacion.canciones.modelo.pojo.Usuario;
 
 /**
  * Servlet implementation class LoginController
