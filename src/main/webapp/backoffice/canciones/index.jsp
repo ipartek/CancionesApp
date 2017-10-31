@@ -1,9 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="com.ipartek.formacion.canciones.pojo.Cancion"%>
 <%@page import="java.util.ArrayList"%>
 
-<%@include file="../includes/header.jsp" %>
-<%@include file="../includes/navbar.jsp" %>
+<%@include file="../../includes/header.jsp" %>
+<%@include file="../../includes/navbar.jsp" %>
 
 
 		<c:if test="${!empty requestScope.mensaje}">        
@@ -66,4 +65,4 @@
 	</form>
 
 
-<%@include file="../includes/footer.jsp" %>
+<%@include file="../../includes/footer.jsp" %>
