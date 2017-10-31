@@ -8,6 +8,11 @@ public class Usuario {
 	private String email;
 	private String avatar;
 
+	public Usuario(String avatar) {
+		super();
+		this.avatar = avatar;
+	}
+
 	public Usuario(String nombre, String pass, String email) {
 		super();
 		this.nombre = nombre;
