@@ -18,9 +18,6 @@
 
     <title>Login | Canciones Web</title>
 
-	
-	<link href="${pageContext.request.contextPath}/vendors/meteocons/stylesheet.css?v2" rel="stylesheet">
-
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/vendors/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">  
@@ -31,13 +28,7 @@
 
 
  <div class="container">
- 
- 
- 		<span class="icon-meteo" data-icon="&"></span>
- 		
- 	
- 	
- 
+  
         <div class="card card-container">         
         
         

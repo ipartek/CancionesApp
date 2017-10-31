@@ -40,8 +40,9 @@
                 </li>       
           </ul>
           
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Buscar...">
+          <form class="navbar-form navbar-right" action="${pageContext.request.contextPath}/backoffice/canciones" method="get">
+          	<input type="hidden" name="accion" value="<%=Acciones.BUSCAR%>">
+			<input type="search" class="form-control" name="criterio" placeholder="Buscar por nombre o artista" required>            
           </form>
           
           
