@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.ipartek.formacion.canciones.pojo.Usuario;
+import com.ipartek.formacion.canciones.modelo.pojo.Usuario;
 
 public class ModeloUsuario {
 
