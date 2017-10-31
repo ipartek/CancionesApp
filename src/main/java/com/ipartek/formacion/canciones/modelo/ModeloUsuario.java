@@ -31,11 +31,12 @@ public class ModeloUsuario {
 	 * @param pass contraseña del usuario
 	 * @return null si no existe usuario, usuario con datos si existe
 	 * @throws SQLException
+	 * @throws ClassNotFoundException 
 	 */
-	public Usuario validar( String nombre, String pass ) throws SQLException {
+	public Usuario validar( String nombre, String pass ) throws SQLException, ClassNotFoundException {
 		
 		Usuario u = null;
-		Connection con = ConnectionManager.getConnection();
+		Connection con = ConnectionManager.open();
 		
 		String sql = "SELECT id,nombre,pass,email,avatar FROM usuario WHERE nombre=? AND pass=?";
 		PreparedStatement pst = con.prepareStatement(sql);		
@@ -55,7 +56,7 @@ public class ModeloUsuario {
 	
 	
 
-	public Usuario insertar(Usuario u) throws SQLException {
+	public Usuario insertar(Usuario u) throws SQLException, ClassNotFoundException {
 		
 		
 		String sql = "";
@@ -65,7 +66,7 @@ public class ModeloUsuario {
 			sql = "INSERT INTO `usuario` (`nombre`, `pass`, `email`, `avatar`) VALUES ('"+u.getNombre()+"', '"+u.getPass()+"', '"+u.getEmail()+"','"+u.getAvatar()+"');";
 		}		
 		
-		Connection con = ConnectionManager.getConnection();
+		Connection con = ConnectionManager.open();
 		PreparedStatement pst = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		
 		int affectedRows = pst.executeUpdate();
