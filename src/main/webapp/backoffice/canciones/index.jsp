@@ -3,9 +3,7 @@
 
 <%@include file="../../includes/header.jsp" %>
 <%@include file="../../includes/navbar.jsp" %>
-
-
-	<%@include file="../../includes/alerts.jsp" %>
+<%@include file="../../includes/alerts.jsp" %>
 		
 	<h1>Listado Canciones</h1>
 	
