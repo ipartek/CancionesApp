@@ -1,6 +1,7 @@
 <%@page import="com.ipartek.formacion.canciones.controller.canciones.backoffice.Acciones"%>
 <%@page import="com.ipartek.formacion.canciones.pojo.Usuario"%>
 
+
 <div class="container"> 
  <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -40,8 +41,9 @@
                 </li>       
           </ul>
           
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Buscar...">
+          <form class="navbar-form navbar-right" action="${pageContext.request.contextPath}/backoffice/canciones">
+            <input type="hidden" name="accion" value=<%=Acciones.BUSCAR %>>
+            <input type="text" class="form-control"  name="busqueda" placeholder="Buscar cancion por nombre o artista" required>
           </form>
           
           

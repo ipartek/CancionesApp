@@ -4,6 +4,8 @@
 <%@include file="../../includes/header.jsp" %>
 <%@include file="../../includes/navbar.jsp" %>
 
+<%@include file="../../includes/alerts.jsp" %>
+
 
 <c:choose>
 	<c:when test="${cancion.id==-1 }"><h1>Crear Nueva Canción</h1></c:when>

@@ -4,10 +4,8 @@
 <%@include file="../../includes/header.jsp" %>
 <%@include file="../../includes/navbar.jsp" %>
 
+<%@include file="../../includes/alerts.jsp" %>
 
-		<c:if test="${!empty requestScope.mensaje}">        
-     		<p>${requestScope.mensaje}</p>
-     	</c:if>
 
 	<h1>Listado Canciones</h1>
 	<a href="${pageContext.request.contextPath}/backoffice/canciones?accion=<%=Acciones.MOSTRAR_FORMULARIO%>" class="btn btn-primary">CREAR CANCION</a>

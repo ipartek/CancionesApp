@@ -59,16 +59,21 @@ public class CancionDAO implements Persistable<Cancion> {
 	@Override
 	public boolean create(Cancion c) {
 		boolean resul = false;
-		String sql = "INSERT INTO `cancion` (`nombre`, `artista`, `duracion`, `cover`) VALUES (?, ?, ?, ?);";
-
+		String sql = "";
+		if (c.getCover() == null || "".equals(c.getCover())) {
+			sql = "INSERT INTO `cancion` (`nombre`, `artista`, `duracion`) VALUES (?, ?, ?);";
+		} else {
+			sql = "INSERT INTO `cancion` (`nombre`, `artista`, `duracion`, `cover`) VALUES (?, ?, ?, ?);";
+		}
 		try (Connection con = ConnectionManager.open();
 				PreparedStatement pst = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
 
 			pst.setString(1, c.getNombre());
 			pst.setString(2, c.getArtista());
 			pst.setString(3, c.getDuracion());
-			pst.setString(4, c.getCover());
-
+			if (c.getCover() != null && !"".equals(c.getCover())) {
+				pst.setString(4, c.getCover());
+			}
 			int affetedRows = pst.executeUpdate();
 			if (affetedRows == 1) {
 
@@ -95,16 +100,25 @@ public class CancionDAO implements Persistable<Cancion> {
 	@Override
 	public boolean update(Cancion c, int id) {
 		boolean resul = false;
-		String sql = "UPDATE cancion SET `nombre`=?, `artista`=?, `duracion`=?, `cover`=? WHERE id=?;";
+		String sql = "";
+		if (c.getCover() != null || "".equals(c.getCover())) {
+			sql = "UPDATE cancion SET `nombre`=?, `artista`=?, `duracion`=?  WHERE id=?;";
+		} else {
+			sql = "UPDATE cancion SET `nombre`=?, `artista`=?, `duracion`=?, `cover`=? WHERE id=?;";
+		}
 
 		try (Connection con = ConnectionManager.open(); PreparedStatement pst = con.prepareStatement(sql);) {
 
 			pst.setString(1, c.getNombre());
 			pst.setString(2, c.getArtista());
 			pst.setString(3, c.getDuracion());
-			pst.setString(4, c.getCover());
-			pst.setInt(5, id);
 
+			if (c.getCover() == null || "".equals(c.getCover())) {
+				pst.setInt(4, id);
+			} else {
+				pst.setString(4, c.getCover());
+				pst.setInt(5, id);
+			}
 			if (pst.executeUpdate() == 1) {
 				resul = true;
 			}

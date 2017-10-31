@@ -42,7 +42,7 @@ public class Cancion {
 		this.nombre = nombre;
 		this.artista = artista;
 		this.setDuracion(duracion);
-		this.cover = "../../img/default-album.png";
+		this.cover = "";
 	}
 
 	public Cancion(String nombre, String artista, String duracion, String cover) throws CancionException {
