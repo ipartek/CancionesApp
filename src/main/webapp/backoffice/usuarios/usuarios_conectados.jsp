@@ -1,7 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 
-<%@include file="../includes/header.jsp" %>
-<%@include file="../includes/navbar.jsp" %>
+<%@include file="../../includes/header.jsp" %>
+<%@include file="../../includes/navbar.jsp" %>
 
 	<%
 		ArrayList<Usuario> usuarios = (ArrayList<Usuario>)application.getAttribute("usuarios_logeados");
@@ -46,4 +46,4 @@
      </script>
      
 
-<%@include file="../includes/footer.jsp" %>    
+<%@include file="../../includes/footer.jsp" %>    

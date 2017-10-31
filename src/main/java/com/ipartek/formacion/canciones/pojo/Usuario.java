@@ -1,18 +1,22 @@
 package com.ipartek.formacion.canciones.pojo;
 
 public class Usuario {
-	
+
 	private int id;
 	private String nombre;
 	private String pass;
 	private String email;
 	private String avatar;
-	
+
 	public Usuario( String nombre, String pass, String email) {
-		super();		
+		super();
 		this.nombre = nombre;
 		this.pass = pass;
 		this.email = email;
+	}
+
+	public Usuario() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getId() {
@@ -60,5 +64,5 @@ public class Usuario {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", pass=" + pass + ", email=" + email + ", avatar=" + avatar
 				+ "]";
 	}
-	
+
 }

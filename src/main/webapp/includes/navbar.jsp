@@ -22,7 +22,8 @@
           <ul class="nav navbar-nav">
             <li><a href="${pageContext.request.contextPath}/backoffice/index.jsp">Canciones Web</a></li>
             <li><a href="${pageContext.request.contextPath}/backoffice/canciones?accion=<%=Acciones.LISTAR %>">Canciones</a></li>
-            <li><a href="${pageContext.request.contextPath}/backoffice/usuarios_conectados.jsp">U.Conectados</a></li>              
+            <li><a href="${pageContext.request.contextPath}/backoffice/usuarios/usuarios_conectados.jsp">U.Conectados</a></li> 
+            <li><a href="${pageContext.request.contextPath}/backoffice/usuarios/index.jsp">Usuarios</a></li>             
           </ul>
           
           <ul class="nav navbar-top-links navbar-right">
