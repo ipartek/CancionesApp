@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%@page import="com.ipartek.formacion.canciones.pojo.Cancion"%>
+<%@page import="com.ipartek.formacion.canciones.modelo.pojo.Cancion"%>
 
 <%@include file="../includes/header.jsp" %>
 <%@include file="../includes/navbar.jsp" %>
@@ -61,7 +61,7 @@
         
         
         <!-- Para poder usar jsp:useBean debe tener un constructor por defecto  -->
-        <jsp:useBean id="c2" class="com.ipartek.formacion.canciones.pojo.Cancion">
+        <jsp:useBean id="c2" class="com.ipartek.formacion.canciones.modelo.pojo.Cancion">
         	 <jsp:setProperty name="c2" property="nombre" value="Bailere sobre tu tumba" />
         	 <jsp:setProperty name="c2" property="artista" value="Siniestro Total" />
         	 <jsp:setProperty name="c2" property="duracion" value="3:23" />
