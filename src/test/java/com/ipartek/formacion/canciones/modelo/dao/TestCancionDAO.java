@@ -25,7 +25,7 @@ public class TestCancionDAO {
 	static final String NOMBRE = "Soldadito Marinero";
 	static final String ARTISTA = "Fito y los Fitipaldis";
 	static final String DURACION = "3:59";
-	static final String COVER = "https://www.google.es/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjOntvLqpDXAhXD6xQKHXKrAxQQjRwIBw&url=http%3A%2F%2Fwww.acordesdcanciones.com%2F2015%2F05%2Fsoldadito-marinero-fito-fitipaldis.html&psig=AOvVaw0F-q-DaMHW6-DNggXdJmRR&ust=1509177539047852";
+	static final String COVER = "http://1.bp.blogspot.com/-ECbO0u4Leyc/VUPO-S7WZiI/AAAAAAAAF3k/gkGx8g3nN5U/s1600/soldadito-marinero-fito-fitipaldis.jpg";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {

@@ -10,7 +10,7 @@
      	</c:if>
 
 	<h1>Listado Canciones</h1>
-	
+	<a href="${pageContext.request.contextPath}/backoffice/canciones?accion=<%=Acciones.MOSTRAR_FORMULARIO%>" class="btn btn-primary">CREAR CANCION</a>
 	<c:if test="${!empty listado}">
 		<table class="ordenable table table-striped table-bordered">
 			<caption>Listado Canciones</caption>	
@@ -27,14 +27,15 @@
 				<c:forEach items="${listado}" var="c">		
 					<tr>
 						<td>
-							<img class="cover" src="${c.cover}" alt="Imagen del álbum" class="cover" />
+							<a href="${pageContext.request.contextPath}/backoffice/canciones?accion=<%=Acciones.MOSTRAR_FORMULARIO%>&id=${c.id}">
+							<img class="cover" src="${c.cover}" alt="Imagen del álbum" class="cover" /></a>
 						</td>				
 						<td>${c.nombre}</td>				
 						<td>${c.artista}</td>
 						<td>${c.duracion}</td>				
 						<td>				
-							<a href="modificar?id=${c.id}">  Modificar  </a>
-							<a href="eliminar?id=${c.id}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+							<a href="${pageContext.request.contextPath}/backoffice/canciones?accion=<%=Acciones.MOSTRAR_FORMULARIO%>&id=${c.id}"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+							<a href="${pageContext.request.contextPath}/backoffice/canciones?id=${c.id}&accion=<%=Acciones.ELIMINAR%>"><i class="fa fa-trash" aria-hidden="true"></i></a>
 						</td>				
 					</tr>
 				</c:forEach>		
@@ -46,23 +47,5 @@
 	<c:if test="${empty listado}">
 		<h3>No hay canciones</h3>
 	</c:if>	
-	
-	
-
-	<h2>Crear Cancion</h2>
-	<form action="crear" method="post">
-
-		<input type="text" name="nombre" placeholder="Nombre de la Cancion" required> 
-		<br> <br> 
-		<input type="text" name="artista" placeholder="Artista o Album" required> <br>
-		<br> 
-		<input type="text" name="duracion" placeholder="00:00" required> <br> <br>
-		<input type="text" name="sImagen" placeholder="Inserta URL de la imagen"> <br>
-		<br> <input type="submit" value="Crear Cancion Nueva"> <br> <br>
-		<a href="eliminar?">Eliminar todas las canciones</a>
-		
-
-	</form>
-
 
 <%@include file="../../includes/footer.jsp" %>
