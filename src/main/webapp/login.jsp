@@ -4,7 +4,7 @@
 <%@page errorPage="error.jsp" %>
 
 
-<c:set var="language" value="${ not empty cookie['cIdioma'] ? cookie['cIdioma'] : 'es_ES' }"></c:set>
+<c:set var="language" value="${ not empty cookie['cIdioma'] ? cookie['cIdioma'].value : 'es_ES' }"></c:set>
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="i18nmessages" /> 
 
