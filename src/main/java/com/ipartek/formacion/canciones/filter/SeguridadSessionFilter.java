@@ -2,14 +2,12 @@ package com.ipartek.formacion.canciones.filter;
 
 import java.io.IOException;
 
-import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,8 +16,10 @@ import com.ipartek.formacion.canciones.modelo.pojo.Usuario;
 
 /**
  * Servlet Filter implementation class SeguridadSessionFilter
+ * 
+ * @WebFilter(dispatcherTypes = { DispatcherType.REQUEST }, urlPatterns = {
+ *                            "/backoffice/*" })
  */
-@WebFilter(dispatcherTypes = { DispatcherType.REQUEST }, urlPatterns = { "/backoffice/*" })
 public class SeguridadSessionFilter implements Filter {
 
 	/**

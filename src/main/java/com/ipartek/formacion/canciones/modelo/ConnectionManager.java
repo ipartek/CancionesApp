@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnectionManager implements AutoCloseable {
 
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://localhost:3306/spoty";
+	private static final String URL = "jdbc:mysql://localhost:3306/canciones";
 	private static final String USUARIO = "root";
 	private static final String PASSWORD = "";
 

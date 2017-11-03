@@ -1,5 +1,5 @@
 <%@page import="com.ipartek.formacion.canciones.controller.canciones.backoffice.Acciones"%>
-<%@page import="com.ipartek.formacion.canciones.pojo.Usuario"%>
+<%@page import="com.ipartek.formacion.canciones.modelo.pojo.Usuario"%>
 
 
 <div class="container"> 
@@ -23,6 +23,8 @@
           <ul class="nav navbar-nav">
             <li><a href="${pageContext.request.contextPath}/backoffice/index.jsp">Canciones Web</a></li>
             <li><a href="${pageContext.request.contextPath}/backoffice/canciones?accion=<%=Acciones.LISTAR%>">Canciones</a></li>
+            <li><a href="${pageContext.request.contextPath}/backoffice/roles?accion=<%=Acciones.LISTAR%>">Roles</a></li>
+            <li><a href="${pageContext.request.contextPath}/backoffice/registros?accion=<%=Acciones.LISTAR%>">Registros</a></li>
             <li><a href="${pageContext.request.contextPath}/backoffice/usuarios_conectados.jsp">U.Conectados</a></li>              
           </ul>
           

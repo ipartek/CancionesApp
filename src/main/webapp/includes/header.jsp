@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 
 <%@page errorPage="error.jsp" %>
-<%@page import="com.ipartek.formacion.canciones.pojo.Usuario"%>
+<%@page import="com.ipartek.formacion.canciones.modelo.pojo.Usuario"%>
 
 <!DOCTYPE html>
 <html lang="es">
